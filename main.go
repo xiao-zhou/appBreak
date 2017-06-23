@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/murlokswarm/app"
 	_ "github.com/murlokswarm/mac"
+	"os"
 )
 
 var (
@@ -44,6 +45,7 @@ func newMainWindow() app.Contexter {
 		TitlebarHidden: true,
 		OnClose: func() bool {
 			win = nil
+			os.Exit(0)
 			return true
 		},
 	})
