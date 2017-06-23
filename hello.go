@@ -17,7 +17,7 @@ func (h *Hello) Render() string {
 <div class="WindowLayout" oncontextmenu="OnContextMenu">    
     <div class="HelloBox">
         <h1>
-            Hello,
+            Take a break,
           <span>
                 {{if .Greeting}}
                     {{html .Greeting}}
@@ -30,8 +30,6 @@ func (h *Hello) Render() string {
                value="{{html .Greeting}}"
                placeholder="What is your name?"
                autofocus="true"
-               onkeydown="Greeting"
-               onkeyup="Greeting"
                onchange="OnInputChange" />
     </div>
 </div>
@@ -40,6 +38,7 @@ func (h *Hello) Render() string {
 
 // OnInputChange is the handler called when an onchange event occurs.
 func (h *Hello) OnInputChange(arg app.ChangeArg) {
+	h.Greeting = arg.Value
 	app.Render(h) // Tells the app to update the rendering of the component.
 }
 
